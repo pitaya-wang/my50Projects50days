@@ -1,0 +1,158 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    background-color: #333;
+    /* 字体颜色 */
+    color: #222;
+
+    /* 隐藏x方向超出的部分 */
+    overflow-x: hidden;
+
+    /* 取消掉默认的外边距 */
+    margin: 0;
+}
+
+.container{
+    background-color: #fafafa;
+
+    /* 设置旋转基点 */
+    transform-origin: top left;
+
+    transition: transform 0.5s linear;
+    width: 100vw;
+    min-height: 100vh;
+    padding: 50px;
+}
+
+/*  */
+.container.show-nav{
+    transform: rotate(-20deg);
+}
+
+.circle-container{ 
+    position:fixed;
+    top: -100px;
+    left:-100px
+}
+.circle{
+    background-color: #ff7979;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.5s linear;
+}
+.container.show-nav .circle{
+    transform: rotate(-70deg);
+}
+
+.circle button{
+    /* 设置鼠标样式 */
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100px;
+    /* 设置背景为透明 */
+    background: transparent;
+    /* 取消边框 */
+    border: 0;
+    font-size: 26px;
+    color: #fff;
+}
+
+.circle button:focus{
+    /* 也是取消边线 */
+    outline: none;
+}
+
+.circle button#open{
+    left: 60%;
+}
+
+/* 这里的.circle类名写成了.close */
+.circle button#close{
+    top: 60%;
+    transform: rotate(90deg);
+    transform-origin: top left;
+
+}
+
+/* +是相邻选择器 */
+.container.show-nav + nav li{
+    transform: translateX(0);
+
+    /* 延迟三秒 */
+    transition-delay: 0.3s;
+}
+
+nav{
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    z-index: 100;
+}
+
+nav ul{
+    list-style-type: none;
+    padding-left: 30px;
+}
+
+nav ul li{
+    /* 大写 */
+    text-transform: uppercase;
+
+    color: #fff;
+    margin: 40px 0;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in;
+}
+nav ul li i {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+nav ul li + li{
+    margin-left: 15px;
+    transform: translateX(-150%);
+}
+
+nav ul li + li + li{
+    margin-left: 30px;
+    transform:translateX(-200%);
+}
+
+nav a{
+    color: #fafafa;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+nav a:hover{
+    color:#ff7979;
+    font-weight: bold; 
+}
+
+.content img{
+    max-width: 100%;
+}
+.content{
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+.content h1{
+    margin: 0;
+}
+
+.content small{
+    color: #555;
+    font-style: italic;
+}
+.content p{
+    color: #333;
+    line-height: 1.5;
+}
