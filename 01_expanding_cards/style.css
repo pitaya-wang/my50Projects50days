@@ -1,0 +1,92 @@
+*{
+   box-sizing: border-box; 
+}
+
+body{
+    /* 设置字体类型，sans-serif是一种字体 */
+    font-family: 'muli',sans-serif;
+    
+    /* 设置为弹性模型 */
+    display: flex;
+
+    align-items: center; /*垂直方向*/
+    justify-content: center;
+
+    /*100vh = 100%, 该元素会被撑开屏幕高度一致*/
+    height: 100vh;
+
+    /*隐藏超出的部分*/
+    overflow: hidden;
+    margin:0;
+}
+
+.container{
+    display: flex;
+    /*设置视窗宽度的百分比*/
+    width: 90vw;
+}
+
+/* 对图片的样式设计 */
+.pic{
+
+    /* 保持图片纵横比并将图片缩放成完全覆盖背景区域的最小大小 */
+    background-size: cover;
+
+    background-position:center;
+
+    /* 不平铺背景图片 */
+    background-repeat: no-repeat;
+
+    height: 80vh;
+    border-radius: 50px;
+    color:#fff;
+
+    /* 设定网页浏览时用户鼠标指针的样式 */
+    cursor: pointer;
+
+    flex:0.5;
+
+    margin: 10px;/*设置外边距*/
+
+    position: relative;/*用于子元素定位*/
+
+    transition:all 700ms ease-in ;
+
+}
+
+/* 对图片中文字的设计 */
+.pic h3{
+    font-size: 24px;
+
+    /* 文字相对于图片的定位 */
+    position:absolute;
+
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+
+    /* 未选中时设置透明度为0 */
+    opacity: 0;
+}
+
+/* 对第一张图片设置 */
+.pic.active{
+    flex: 5;
+}
+.pic.active h3{
+    /* 一开始就显示第一张图片的文字,文字从无到有，渐变效应 */
+    opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s;
+}
+
+/* 设置媒体查询  这个东西b站视频略过了*/
+@media (max-width:480px){
+    .container{
+        width: 100vw;
+    }
+
+    .pit:nth-of-type(4),
+    .pit:nth-of-type(5){
+        display: none;
+    }
+}

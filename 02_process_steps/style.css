@@ -1,0 +1,127 @@
+/* 定义一个根元素变量 */
+:root{
+    /* -- + 自定义名字 = 定义一个变量 */
+    /* 满足一个条件时为蓝色，不满足为白色 */
+    --line-border-fill:#3498db;
+    --line-border-empty:#e0e0e0
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f6f7fb;
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+.container{
+    /* 文本居中 */
+    text-align: center;
+}
+
+/* 对数字内容盒子 */
+.progress_container{
+
+    /* 对主盒子设置为弹性模型 */
+    display: flex;
+
+    /* 内容对齐,设置数字的排列 */
+    justify-content: space-between;
+
+    position:relative;
+    margin-bottom: 30px;
+    /* 限制最大宽度，标准写法 */
+    max-width: 100%;
+    width: 350px;
+}
+
+/* 插入一个伪元素 */
+.progress_container::before{
+    content: '';
+    background-color:var(--line-border-empty) ;
+    position:absolute;
+    top:50%;
+    left:0;
+
+    /* 设置垂直居中 */
+    transform:translateY(-50%) ;
+    height: 4px;
+    width: 100%;
+
+    /*将该元素的层级设置为数字的下面（从而不会遮挡数字）  */
+    z-index: -1;
+}
+
+/* 这部分是进度条的静态设置 */
+.progress{
+    background-color: var(--line-border-fill);
+    position:absolute;
+    top: 50%;
+    left:0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 0%;
+    z-index: -1;
+    transition: 0.4s ease;
+}
+
+/* 对数字部分的设置 */
+.circle{
+    background-color: #fff;
+    color: #999;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid var(--line-border-empty);
+    transition: all 0.4s ease;
+}
+.circle.active{
+    border-color: var(--line-border-fill);
+    
+}
+
+/* 设置两个按钮的样式 */
+.btn{
+    background-color: var(--line-border-fill);
+
+    /* 文字颜色 */
+    color: #fff;
+
+    /* 取消按键边框 */
+    border: 0;
+    border-radius: 6px;
+
+    /* 设置鼠标的手指样式 */
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    
+    /* 字体大小设置 */
+    font-size: 15px;
+}
+
+.btn:active{
+    /* 缩小为原来的0.98倍 */
+    transform: scale(0.98);
+}
+
+.btn:focus{
+    outline:0;
+}
+
+.btn:disabled{
+    /* 设置一个不被选中时的背景色和鼠标样式 */
+    background-color:var(--line-border-empty) ;
+    cursor: not-allowed;
+}
