@@ -1,0 +1,87 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    /* 背景图片线性渐变 */
+    background-image:linear-gradient(90deg,#7d5fff,#7158e2);
+    
+
+    /* 这三个一起才能设置垂直居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* 没有这个高度的话，就会在窗口顶部水平方向居中 */
+    height: 100vh;
+
+    overflow: hidden;
+
+    /* 消除浏览器默认的8px外边距 */
+    margin: 0;
+
+}
+
+/* 整体搜索框样式 */
+.search{
+    /* 母盒子相对定位 */
+    position: relative;
+    height: 50px;
+}
+
+/* 输入栏样式 */
+.search .input{
+    /* background-color: #fff; */
+    border: 0;
+    border-radius: 10px 0px 0px 10px;
+    font-size: 18px;
+    padding: 15px;
+    height: 50px;
+    width: 50px;
+    transition: width 0.3s ease;
+}
+
+/* 按钮样式 */
+.btn{
+    /* 按钮的默认背景颜色是灰色 */
+    background-color: #fff;
+
+    /* 消除按钮边框线 */
+    border: 0;
+
+    border-radius: 0px 10px 10px 0px;
+
+    /* 鼠标指针样式 */
+    cursor: pointer;
+
+    /* 按钮文本字体大小 */
+    font-size: 18px;
+
+    /* 子盒子绝对定位 */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 50px;
+    height: 50px;
+
+    /* 设置鼠标点击搜索按钮时按钮向右平移的的动画效果 */
+    transition: transform 0.3s ease;
+}
+
+/* 聚焦时外边线设置为0 */
+.btn:focus, 
+.input:focus{
+    outline: none;
+}
+
+/* 类名同时有search和active时才会生效 */
+/* 鼠标点击后会添加active类名，就能使搜索框宽度由50变为200 */
+.search.active .input{
+    width: 200px;
+}
+
+/* 点击按钮时触发的动画：往右平移 */
+.search.active .btn{
+    transform: translateX(198px);
+}
