@@ -1,0 +1,63 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: bisque;
+    display: flex;
+
+    /* 垂直排列子元素 */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* 设置标题元素文字大小 */
+h1{
+    margin: 10px;
+}
+
+/* 设置子元素样式 */
+.content{
+    /* 背景颜色 */
+    background-color: steelblue;
+
+    /* 文字颜色 */
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 400px;
+    height: 200px;
+    margin: 10px;
+
+    border-radius: 10px;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
+
+    /* 设置子元素块的移动动画 */
+    transform: translateX(400px);
+    transition: transform 0.4s ease;
+}
+
+/* even：设置的对象为偶数位 */
+/* nth-of-type是一个获取一些适用项并应用样式的属性，这是一个CSS3中的选择器 */
+.content:nth-of-type(even){
+    transform: translateX(-400%);
+
+    background-color: red;
+    /* 测试代码 */
+}
+
+.content.show{
+    /* 让前面移走的块回来 */
+    transform: translateX(0);
+}
+
+.content h3{
+    font-size: 45px;
+} 
