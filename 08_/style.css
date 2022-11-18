@@ -1,0 +1,124 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: steelblue;
+    color: #fff;
+
+    display: flex;
+    /* 子元素按竖直方向排布 */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* 要有高度才能居中显示,没有高度的情况下是内容撑开的高度 */
+    height: 100vh;
+
+    overflow: hidden;
+    margin: 0;
+}
+
+.container{
+    background-color: rgba(0, 0, 0, 0.4);
+
+    /* 设置一个内边距，上下20， 左右40 */
+    padding: 20px 40px;
+    border-radius: 5px;
+   
+}
+
+.container p{
+    text-align: center;
+    margin-bottom:30px ;
+
+}
+
+.container a{
+    text-decoration: none;
+    color: lightblue;
+}
+
+.btn{
+    cursor: pointer;
+    /* 设置为行内块级元素 ,以设置宽高*/
+    display: inline-block;
+    width: 100%;
+    background-color: lightblue;
+
+    /* 上下左右填充15px */
+    padding: 15px;
+    font-size: 16px;
+    border: 0;
+    border-radius: 5px;
+}
+
+/* 规范写法 */
+.btn:focus{
+    /* 按钮聚焦时取消外边框线 */
+    outline:line ;
+}
+
+/* 点击按钮时有缩小的效果 */
+.btn:active{
+    transform: scale(0.98);
+}
+
+/* 设置文本与按钮之间的距离 */
+.text{
+    margin-top: 30px;
+}
+.form-control{
+    position: relative;
+    margin: 20px 0 40px;
+}
+.form-control input{
+
+    /* 设置背景色为透明 */
+    background-color: transparent;
+    border:0;
+    border-bottom: 2px #fff solid;
+
+    /* 设为块级元素，使之不在一行显示 */
+    display: block;
+    width: 100%;
+
+    /* 上下15，左右0 */
+    padding: 15px 0;
+    font-size: 18px;
+    color: #fff;
+
+}
+
+/*valid  输入时触发 */
+.form-control input:focus,
+.form-control input:valid{
+    /* 隐藏边框 */
+    outline: 0;
+    border-bottom-color: lightblue;
+}
+
+.form-control label{
+    position: absolute;
+    top: 15px;
+    left: 0;
+    pointer-events: none;
+}
+
+/* 这里在js中添加 */
+.form-control label span{
+    display: inline-block;
+    font-size: 18px;
+    min-width: 5px;
+
+    /* 这里实现波浪效果 */
+    /* 三次方贝塞尔曲线 */
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* 当input聚焦时,这是个难点 */
+.form-control input:focus + label span,
+.form-control input:valid + label span{
+    color: lightblue;
+    transform: translateY(-30px);
+}
