@@ -1,0 +1,39 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #8e44ad;
+    color: #fff;
+    display: flex;
+
+    /* 有高度以后才会在垂直方向上居中 */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    overflow: hidden;
+    margin: 0;
+}
+
+.counter-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    /* 拉开距离 */
+    margin: 30px 50px;
+}
+
+.counter {
+    font-size: 60px;
+    margin-top: 10px;
+}
+
+@media(max-width:580px) {
+    /* 屏幕小于580px后改为垂直排列 */
+    body{
+        flex-direction: column;
+    }
+}
